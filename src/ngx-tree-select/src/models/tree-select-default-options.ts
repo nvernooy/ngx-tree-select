@@ -11,5 +11,6 @@ export class TreeSelectDefaultOptions {
   public textField?: string;
   public childrenField?: string;
   public filterCaseSensitive?: boolean;
-  public expandMode = ExpandMode.None;
+  public expandMode?: string = ExpandMode.None;
+  public allowNone?: boolean;
 }

@@ -1,13 +1,13 @@
 <div class="container">
   <div class="page-header">
-    <h1>Exemple ngx-tree-select with flat datas</h1>
+    <h1>Example ngx-tree-select with flat data</h1>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">Simple select</div>
     <div class="panel-body">
       <form novalidate>
         <tree-select name="simpleSelect" [items]="items" childrenField="children" [(ngModel)]="simpleSelected" required=true #simpleSelect="ngModel"
-          [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter" [disabled]="Disabled"></tree-select>
+          [placeholder]="Placeholder" [allowNone]="AllowNone" [filterPlaceholder]="FilterPlaceholder" [allowFilter]="ShowFilter" [disabled]="Disabled"></tree-select>
         <div *ngIf="simpleSelect.errors && (simpleSelect.dirty || simpleSelect.touched)" class="alert alert-danger">
           <div [hidden]="!simpleSelect.errors.required">Simple select is required</div>
         </div>
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
     <div class="panel-heading">Multiple select</div>
     <div class="panel-body">
       <form novalidate>
@@ -36,17 +36,22 @@
         <li *ngFor="let itm of multipleSelected">{{itm | json}}</li>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="panel panel-default">
     <div class="panel-heading">Options</div>
     <div class="panel-body">
       <form class="form-horizontal" style="margin:15px">
         <div class="form-group">
+          <label for="placeholder">Placeholder text</label>
+          <input id="placeholder" type="text" name="placeholder" [(ngModel)]="Placeholder"
+            class="form-control">
+        </div>
+        <div class="form-group">
           <label for="MaxDisplayed">Max elements displayed</label>
           <input id="MaxDisplayed" type="number" name="MaxDisplayed" [(ngModel)]="MaxDisplayed" class="form-control">
         </div>
         <div class="form-group">
-          <label for="FilterPlaceholder">Filter</label>
+          <label for="FilterPlaceholder">Filter text</label>
           <input id="FilterPlaceholder" type="text" name="FilterPlaceholder" [(ngModel)]="FilterPlaceholder" [disabled]="!ShowFilter"
             class="form-control">
         </div>
@@ -58,6 +63,11 @@
         <div class="checkbox">
           <label>
               <input type="checkbox" [checked]="Disabled" (change)="Disabled = $event.target.checked"> Disabled
+            </label>
+        </div>
+        <div class="checkbox">
+          <label>
+              <input type="checkbox" [checked]="AllowNone" (change)="AllowNone = $event.target.checked"> Allow none value in single select
             </label>
         </div>
       </form>

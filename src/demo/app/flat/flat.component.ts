@@ -12,14 +12,10 @@ export class FlatComponent {
   public Disabled = false;
   public FilterPlaceholder = 'Type here to filter elements...';
   public MaxDisplayed = 5;
+  public Placeholder = "Placeholder text";
+  public AllowNone = true;
 
-  public simpleSelected = {
-    id: 'LU',
-    name: 'Luxembourg',
-    capital: 'Luxembourg',
-    phone: '352',
-    currency: 'EUR'
-  };
+  public simpleSelected = { };
 
   public multipleSelected = [
     {

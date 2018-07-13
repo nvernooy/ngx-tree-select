@@ -131,6 +131,7 @@ When you place **tree-select** on HTML template you can define :
 - **childrenField** : determine which property of yours items contains children items
 - **allowParentSelection** : if set to **true**, you can select parent, else when you select parent all children are selected
 - **expandMode** : Define which item are expand at initilization. Possible value are : **None**, **Selection** or **All**
+- **placeholder** : Placeholder text for empty selection
 
 **tree-select** component use default options define when you call ```NgxTreeSelectModule.forRoot``` except if you override it with attribute on HTML template.
 

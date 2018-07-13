@@ -78,6 +78,15 @@ export class TreeSelectComponent implements ControlValueAccessor {
     return this.svc.Configuration.allowMultiple;
   }
 
+  // allow all options to be deselected
+  @Input()
+  public set allowNone(value: boolean) {
+    this.svc.setConfiguration((opt) => opt.allowNone = value, false);
+  }
+  public get allowNone(): boolean {
+    return this.svc.Configuration.allowNone;
+  }
+
   @Input()
   public set filterCaseSensitive(value: boolean) {
     this.svc.setConfiguration((opt) => opt.filterCaseSensitive = value, true);
@@ -242,7 +251,7 @@ export class TreeSelectComponent implements ControlValueAccessor {
   }
 
   /**
-   * This finction is called when user click on show more link.
+   * This function is called when user click on show more link.
    *
    * @param {*} $event
    * @memberof TreeSelectComponent

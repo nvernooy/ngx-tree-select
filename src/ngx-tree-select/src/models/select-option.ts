@@ -14,6 +14,7 @@ export class SelectOption {
   public allowParentSelection = false;
   public maxVisibleItemCount: number;
   public expandMode = ExpandMode.None;
+  public allowNone = false;
 
   public isHierarchy(): boolean {
     return this.childProperty && this.childProperty.trim().length > 0;

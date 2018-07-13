@@ -96,10 +96,25 @@ export class SelectService {
   }
 
   public toggleItemSelection(item: SelectableItem): void {
+    // do not deselect items with allowNone in single select
+    let deselect = false;
+    if (!this.Configuration.allowMultiple && this.Configuration.allowNone) {
+      let current = this.getSelection();
+      if (current){
+        if (current[this.Configuration.idProperty] == item[this.Configuration.idProperty])
+          deselect = true;
+      }
+    }
+
     if (!this.Configuration.allowMultiple) {
+      // single select items
       this.setAllUnselected(this._items);
     }
-    item.selected = !item.selected;
+
+    // do not reselect item if allow none
+    if (!deselect)
+      item.selected = !item.selected;
+
     this.setConfiguration((opt) => opt.model = this.getSelection(), false);
     if (this.Configuration.closeOnSelection) {
       this.setConfiguration((opt) => opt.isOpen = false, false);
